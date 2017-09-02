@@ -494,6 +494,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mazeevroman.Calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -508,6 +509,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mazeevroman.Calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -521,6 +523,7 @@
 				0CFF73551F0102CF00AD8FD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0CFF73611F01032E00AD8FD6 /* Build configuration list for PBXNativeTarget "CalculatorUITests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +532,7 @@
 				0CFF73631F01032E00AD8FD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4448DA61E53281D00B45C56 /* Build configuration list for PBXProject "Calculator" */ = {
 			isa = XCConfigurationList;

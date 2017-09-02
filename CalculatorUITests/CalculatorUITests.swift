@@ -3,7 +3,7 @@
 //  CalculatorUITests
 //
 //  Created by Mazeev Roman on 26.06.17.
-//  Copyright © 2017 Tatiana Kornilova. All rights reserved.
+//  Copyright © 2017 Mazeev Roman. All rights reserved.
 //
 
 import XCTest
@@ -203,11 +203,11 @@ class CalculatorUITests: XCTestCase {
         
         // User starts off entering a new number by touching the decimal point
         buttonDecimalPoint.tap()
-        XCTAssert(app.staticTexts["."].exists)
+        XCTAssert(app.staticTexts["0."].exists)
         buttonDigit2.tap()
-        XCTAssert(app.staticTexts[".2"].exists)
+        XCTAssert(app.staticTexts["0.2"].exists)
         buttonDigit7.tap()
-        XCTAssert(app.staticTexts[".27"].exists)
+        XCTAssert(app.staticTexts["0.27"].exists)
         buttonAdd.tap()
         buttonDigit3.tap()
         XCTAssert(app.staticTexts["3"].exists)
@@ -372,11 +372,25 @@ class CalculatorUITests: XCTestCase {
         app.buttons["7"].tap()
         app.buttons["8"].tap()
         app.buttons["9"].tap()
-        app.buttons["⌫"].tap()
-        app.buttons["⌫"].tap()
+        app.buttons["←"].tap()
+        app.buttons["←"].tap()
         
         XCTAssert(app.staticTexts["456 +  …"].exists)
         XCTAssert(app.staticTexts["7"].exists)
         
+    }
+    func testCollapseLabelBug() {
+        let app = XCUIApplication()
+        
+        app.buttons["4"].tap()
+        app.buttons["+"].tap()
+        app.buttons["5"].tap()
+        app.buttons["←"].tap()
+        XCTAssert(app.staticTexts["0"].exists)
+        XCTAssert(app.staticTexts["4 +  …"].exists)
+        app.buttons["←"].tap()
+        XCTAssert(app.staticTexts["4"].exists)
+        XCTAssert(app.staticTexts["4 ="].exists)
+
     }
 }

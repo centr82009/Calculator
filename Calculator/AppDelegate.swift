@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Calculator
 //
-//  Created by Tatiana Kornilova on 2/14/17.
-//  Copyright © 2017 Tatiana Kornilova. All rights reserved.
+//  Created by Mazeev Roman on 6.06.17.
+//  Copyright © 2017 Mazeev Roman. All rights reserved.
 //
 
 import UIKit
