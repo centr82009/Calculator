@@ -257,7 +257,7 @@ struct CalculatorBrain {
     }
 }
 
-let formatter:NumberFormatter = {
+let formatter: NumberFormatter = {
     let formatter = NumberFormatter()
     formatter.numberStyle = .decimal
     formatter.maximumFractionDigits = 6
@@ -265,5 +265,4 @@ let formatter:NumberFormatter = {
     formatter.groupingSeparator = " "
     formatter.locale = Locale.current
     return formatter
-    
 } ()

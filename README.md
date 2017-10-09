@@ -1,5 +1,5 @@
 # Calculator
-## Screenshot 
+## Screenshot
 [![Screenshot](https://s26.postimg.org/whb0b1q61/Simulator_Screen_Shot_3_._2017_._1.56.25.png)](https://postimg.org/image/bkes6ds51/)
 
 ## Changhelog

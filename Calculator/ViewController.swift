@@ -48,7 +48,8 @@ class ViewController: UIViewController {
         }
         set {
             if let value = newValue {
-                display.text = formatter.string(from: NSNumber(value: value))
+                let extractedExpr: NSNumber = NSNumber(value: value)
+                display.text = formatter.string(from: extractedExpr)
             }
         }
     }
