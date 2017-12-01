@@ -102,7 +102,7 @@ class ViewController: UIViewController {
     @IBAction func undoButton(_ sender: UIButton) {
         if userInTheMiddleOfTyping {
             guard !display.text!.isEmpty else {return }
-            display.text = String (display.text!.characters.dropLast())
+            display.text = String (display.text!.dropLast())
             if display.text!.isEmpty{
                 display.text = "0"
                 userInTheMiddleOfTyping = false
@@ -116,7 +116,7 @@ class ViewController: UIViewController {
     
     @IBAction func setM(_ sender: UIButton) {
         userInTheMiddleOfTyping = false
-        let symbol = String((sender.currentTitle!).characters.dropFirst())
+        let symbol = String(sender.currentTitle!.dropFirst())
         
         variableValues[symbol] = displayValue
         displayResult = brain.evaluate(using: variableValues)
