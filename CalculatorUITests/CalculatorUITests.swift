@@ -379,6 +379,7 @@ class CalculatorUITests: XCTestCase {
         XCTAssert(app.staticTexts["7"].exists)
         
     }
+    
     func testCollapseLabelBug() {
         let app = XCUIApplication()
         
@@ -391,6 +392,21 @@ class CalculatorUITests: XCTestCase {
         app.buttons["←"].tap()
         XCTAssert(app.staticTexts["4"].exists)
         XCTAssert(app.staticTexts["4 ="].exists)
-
+        
+    }
+    
+    func testSetMButton() {
+        let app = XCUIApplication()
+        
+        app.buttons["5"].tap()
+        app.buttons["→M"].tap()
+        XCTAssert(app.staticTexts["5"].exists)
+        XCTAssert(app.staticTexts["0"].exists)
+        app.buttons["6"].tap()
+        app.buttons["5"].tap()
+        app.buttons["÷"].tap()
+        app.buttons["M"].tap()
+        app.buttons["="].tap()
+        XCTAssert(app.staticTexts["13"].exists)
     }
 }
