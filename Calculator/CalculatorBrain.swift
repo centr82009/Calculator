@@ -42,7 +42,6 @@ struct CalculatorBrain {
     }
     
     private enum Operation {
-        case nullaryOperation(() -> Double,String)
         case constant (Double)
         case unaryOperation ((Double) -> Double,((String) -> String)?, ((Double) -> String?)?)
         case binaryOperation ((Double, Double) -> Double, ((String, String) -> String)?,
@@ -51,16 +50,15 @@ struct CalculatorBrain {
         
     }
     
+    
     private var operations : Dictionary <String,Operation> = [
-        "Rand": Operation.nullaryOperation(
-            { Double(arc4random()) / Double(UInt32.max)}, "rand()"),
         "π": Operation.constant(Double.pi),
-        "±": Operation.unaryOperation({ -$0 }, nil, nil),
+        "±": Operation.unaryOperation({ -$0 }, nil , nil),
         "√": Operation.unaryOperation(sqrt,nil, { $0 < 0 ? "√ of a negative" : nil }),
         "%": Operation.unaryOperation({$0/100}, nil, nil),
         "cos": Operation.unaryOperation(cos,nil, nil),
         "sin": Operation.unaryOperation(sin,nil, nil),
-        "tan": Operation.unaryOperation(tan,nil, nil),
+        "tg": Operation.unaryOperation(tan,nil, nil),
         "x²" : Operation.unaryOperation({$0 * $0}, { "(" + $0 + ")²"}, nil),
         "×": Operation.binaryOperation(*, nil, nil, 1),
         "÷": Operation.binaryOperation(/, nil,
@@ -98,7 +96,7 @@ struct CalculatorBrain {
         }
     }
     
-    // MARK: - evaluate
+    // MARK: - Evaluate
     
     func evaluate(using variables: Dictionary<String,Double>? = nil) ->
         (result: Double?, isPending: Bool, description: String, error: String?){
@@ -158,9 +156,6 @@ struct CalculatorBrain {
                     error = nil
                     switch operation {
                         
-                    case .nullaryOperation(let function, let descriptionValue):
-                        cache = (function(), descriptionValue)
-                        
                     case .constant(let value):
                         cache = (value,symbol)
                         
@@ -184,15 +179,9 @@ struct CalculatorBrain {
                                 descriptionFunction = {$0 + " " + symbol + " " + $1}
                             }
                             
-                            pendingBinaryOperation = PendingBinaryOperation (function: function,
-                                                                             firstOperand: cache.accumulator!,
-                                                                             descriptionFunction: descriptionFunction!,
-                                                                             descriptionOperand: cache.descriptionAccumulator!,
-                                                                             validator: validator,
-                                                                             prevPrecedence: prevPrecedence,
-                                                                             precedence:precedence )
-                            cache = (nil, nil)
+                            pendingBinaryOperation = PendingBinaryOperation (function: function, firstOperand: cache.accumulator!, descriptionFunction: descriptionFunction!, descriptionOperand: cache.descriptionAccumulator!, validator: validator, prevPrecedence: prevPrecedence, precedence:precedence )
                             
+                            cache = (nil, nil)
                         }
                         
                     case .equals:
@@ -202,7 +191,7 @@ struct CalculatorBrain {
             }
             
             func  performPendingBinaryOperation() {
-                if pendingBinaryOperation != nil && cache.accumulator != nil {
+                if resultIsPending && cache.accumulator != nil{
                     
                     error = pendingBinaryOperation!.validate(with: cache.accumulator!)
                     
@@ -256,6 +245,8 @@ struct CalculatorBrain {
         }
     }
 }
+
+// MARK: - NumberFromatter
 
 let formatter: NumberFormatter = {
     let formatter = NumberFormatter()

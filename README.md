@@ -4,6 +4,11 @@
 
 ## Changhelog
 
+### 0.0.4
+* Fix tan bug
+* Fix buttons spacing bug
+* Remove not desired button Rand()
+
 ### 0.0.3
 * Added support of Swift 4
 
@@ -14,6 +19,6 @@
 * Made simple MVC Calculator
 
 ## To do
-* Graph
-* Repeat the last operation when you press =
 * Fix +/- description
+* Put something to empty buttons
+* Repeat the last operation when you press =
